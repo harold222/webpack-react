@@ -1,0 +1,51 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard-with-typescript"
+    ],
+    "globals": {
+        "document": true,
+        "navigator": true,
+        "window": true,
+        "console": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.ts",
+                "*.tsx",
+                "*.jsx",
+                "*.js"
+            ]
+        }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+//        "project": [
+//            "./tsconfig.json"
+//        ]
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react-prop-types": 0,
+        "@typescript-eslint/strict-boolean-expressions": "warn",
+        "semi": "off",
+        "@typescript-eslint/semi":  "off",
+        "indent": "off",
+        "@typescript-eslint/indent": "off",
+        "arrow-body-style": "off",
+        "react/no-array-index-key": 0
+    }
+}
