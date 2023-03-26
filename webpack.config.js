@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 const development = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'local';
 
 module.exports = {
-    entry: './src/index.jsx', // punto de entrada
+    entry: './src/index.tsx', // punto de entrada
     output: {
         path: path.join(__dirname, '/dist'), // carpeta de salida
         filename: development ? '[name].js' : 'bundle.[hash].js', // nombre del archivo
@@ -22,22 +22,23 @@ module.exports = {
         hot: true,
         open: true,
     },
-    // optimization: {
-    //     runtimeChunk: 'single',
-    //     splitChunks: {
-    //         chunks: 'all',
-    //     }
-    // },
     devtool: 'eval-source-map', // al depurar encuentre el archivo original
     module: {
         rules: [ // reglas para los archivos
             {
                 enforce: "pre", // antes de que se ejecute el loader
-                test: /\.(js|jsx)$/, // se ejecute primero el lint para que se genere el build
+                test: /\.(js|jsx|ts|tsx)$/, // se ejecute primero el lint para que se genere el build
                 exclude: /node_modules/,
                 use: [ // previamente pase por estos loaders
                     "source-map-loader"
                 ]
+            },
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "ts-loader"
+                }
             },
             { //reglas de babel ES Y JSX
                 test: /\.(js|jsx)$/, // archivos que se van a transformar
@@ -47,7 +48,8 @@ module.exports = {
                     options: {
                         presets: [
                             '@babel/env',
-                            '@babel/react'
+                            '@babel/react',
+                            '@babel/typescript'
                         ],
                     }
                 }
@@ -96,7 +98,7 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.scss', '.sass'], // extensiones que se van a usar
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.sass'], // extensiones que se van a usar
         modules: [
             'node_modules',
         ]
