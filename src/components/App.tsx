@@ -28,7 +28,7 @@ const App = () => {
                 typeOfDocument: 1,
                 numberDocument: '123456789',
                 phone: '987654321',
-                email: 'test@test.co'
+                email: 'test@test.co',
             })
         );
     };
