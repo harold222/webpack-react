@@ -1,14 +1,14 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import App from './components/App'
 import './styles/index.scss'
 
-const rootApp = document.getElementById('root')
+const rootApp = document.getElementById('root');
 
-if (!rootApp)
-    throw new Error('No se encontró el elemento root')
+if (!rootApp) throw new Error('No se encontró el elemento root')
 
-ReactDOM.render(
-    <App />,
-    rootApp
-)
+const root = ReactDOM.createRoot(rootApp);
+
+root.render(
+    <App />
+);
