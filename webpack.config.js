@@ -13,30 +13,9 @@ const rules = [ // reglas para los archivos
         ]
     },
     {
-        test: /\.(ts|tsx)$/,
+        test: /\.([jt]sx?)?$/,
+        use: "swc-loader",
         exclude: /node_modules/,
-        use: {
-            loader: "ts-loader"
-        }
-    },
-    { //reglas de babel ES Y JSX
-        test: /\.(js|jsx)$/, // archivos que se van a transformar
-        exclude: /node_modules/, // no se van a transformar los archivos de node_modules
-        use: {
-            loader: "babel-loader", // loader que se va a usar
-            options: {
-                presets: [
-                    '@babel/env',
-                    [
-                        '@babel/preset-react',
-                        {
-                            runtime: 'automatic' // importa react autamaticamente
-                        }
-                    ],
-                    '@babel/typescript'
-                ],
-            }
-        }
     },
     {
         test: /\.(css|scss|sass)$/,

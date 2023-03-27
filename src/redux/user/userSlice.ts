@@ -46,7 +46,7 @@ export const userSlice = createSlice({
 
 export const fetchUser = createAsyncThunk(
     'user/fetchUser',
-    async ({}, thunkAPI) => {
+    async (_argv, thunkAPI) => {
         const { info } = thunkAPI.getState() as IUser;
         const response = await fetch('http://localhost:5017/solicitud',{
             method: 'POST',
